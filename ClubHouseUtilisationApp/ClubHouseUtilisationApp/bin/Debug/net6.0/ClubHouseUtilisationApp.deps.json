@@ -1,0 +1,62 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "ClubHouseUtilisationApp/1.0.0": {
+        "dependencies": {
+          "CHUService": "1.0.0"
+        },
+        "runtime": {
+          "ClubHouseUtilisationApp.dll": {}
+        }
+      },
+      "CHUModels/1.0.0": {
+        "dependencies": {
+          "CHUUtilties": "1.0.0"
+        },
+        "runtime": {
+          "CHUModels.dll": {}
+        }
+      },
+      "CHUService/1.0.0": {
+        "dependencies": {
+          "CHUModels": "1.0.0"
+        },
+        "runtime": {
+          "CHUService.dll": {}
+        }
+      },
+      "CHUUtilties/1.0.0": {
+        "runtime": {
+          "CHUUtilties.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ClubHouseUtilisationApp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CHUModels/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CHUService/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CHUUtilties/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
