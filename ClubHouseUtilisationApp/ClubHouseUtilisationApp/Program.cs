@@ -4,24 +4,24 @@ using CHUService.Facilities;
 
 ConcreteFactilityFactory factory = new ConcreteFactilityFactory();
 
-Console.WriteLine("Enter the user name whom booking is to be done (UserA, UserB, UserC): ");
+Console.WriteLine("Enter the user name whom booking is to be done (Vinod, UserA, UserB, UserC): ");
 var userName = Console.ReadLine();
 
-userName = !String.IsNullOrEmpty(userName) ? userName : "UserA";
+userName = !String.IsNullOrEmpty(userName) ? userName : "Vinod";
 
 Console.WriteLine($"Booking for the user {userName}: ");
 
-BookFacility(factory);
+BookFacility(factory, userName);
 
 Console.ReadKey();
 
-static void BookFacility(ConcreteFactilityFactory factory)
+static void BookFacility(ConcreteFactilityFactory factory, string userName)
 {
     Console.WriteLine("Enter your Facility Type (Pool, KidsPlayArea, Gym, Library): ");
 
     var type = Console.ReadLine();
 
-    IBaseFacility instance = factory.GetFactilityInstance(!String.IsNullOrEmpty(type) ? type : "Gym");
+    IBaseFacility instance = factory.GetFactilityInstance(!String.IsNullOrEmpty(type) ? type : "Gym", userName);
     instance.Book();
 
     Console.WriteLine("Do you wish book another facility (Y/N): ");
@@ -29,7 +29,7 @@ static void BookFacility(ConcreteFactilityFactory factory)
     switch (yesNo)
     {
         case "Y":
-            BookFacility(factory);
+            BookFacility(factory, userName);
             break;
         case "N":
             Console.WriteLine("Thank you booking.");

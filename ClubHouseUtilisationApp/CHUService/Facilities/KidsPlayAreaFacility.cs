@@ -2,19 +2,27 @@
 
 namespace CHUService.Facilities
 {
-    public class KidsPlayAreaFacility : IBaseFacility
+    public class KidsPlayAreaFacility : BaseFacility, IBaseFacility
     {
         private static readonly List<KidsPlayAreaFacilityViewModel> kidsAreaFacilties = new();
-        public KidsPlayAreaFacility()
+        public override string Type { get; set; }
+
+        public KidsPlayAreaFacility(string type, string username)
         {
             kidsAreaFacilties.Add(new KidsPlayAreaFacilityViewModel("FirstFloorBlockA", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 09, 00, 00), new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 17, 00, 00), MaintainanceType.Available) { });
             kidsAreaFacilties.Add(new KidsPlayAreaFacilityViewModel("SecondFloorBlockA", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 09, 00, 00), new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 13, 00, 00), MaintainanceType.NotAvailable) { });
             kidsAreaFacilties.Add(new KidsPlayAreaFacilityViewModel("FirstFloorBlockB", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 09, 00, 00), new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 17, 00, 00), MaintainanceType.NotAvailable) { });
             kidsAreaFacilties.Add(new KidsPlayAreaFacilityViewModel("SecondFloorBlockB", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 09, 00, 00), new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 13, 00, 00), MaintainanceType.NotAvailable) { });
+
+            Type = type;
+            UserName = username;
         }
 
-        public void Book()
+
+
+        public bool Book()
         {
+            bool result = false;
             Console.WriteLine($"Enter your Kids area Name from the available list: {string.Join(",", kidsAreaFacilties.Select(x => x.Name))} ");
             var type = Console.ReadLine();
             type = !String.IsNullOrEmpty(type) ? type : "FirstFloorBlockA";
@@ -35,6 +43,7 @@ namespace CHUService.Facilities
                     }
                     else
                     {
+                        Task.Run(() => LogUserBooking(UserName, this.Type, startDate, endDate));
                         Console.WriteLine($"Booking is confirmed.Do you want to again book another Kids area (Y/N)?");
                         var yesNo = Console.ReadLine();
                         switch (yesNo)
@@ -43,6 +52,7 @@ namespace CHUService.Facilities
                                 this.Book();
                                 break;
                             case "N":
+                                result = true;
                                 Console.WriteLine("Thank you booking has been confirmed.");
                                 break;
                             default:
@@ -56,6 +66,8 @@ namespace CHUService.Facilities
             {
                 Console.WriteLine("Bookings are not avialable due to maintainance.");
             }
+
+            return result;
         }
     }
 }

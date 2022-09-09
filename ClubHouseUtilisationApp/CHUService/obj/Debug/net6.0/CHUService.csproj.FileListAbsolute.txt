@@ -18,6 +18,11 @@ C:\Users\91807\source\repos\ClubHouseUtilisationApp\CHUService\obj\Debug\net6.0\
 C:\Users\91807\source\repos\ClubHouseUtilisationApp\CHUService\obj\Debug\net6.0\ref\CHUService.dll
 C:\Users\91807\source\repos\ClubHouseUtilisationApp\CHUService\bin\Debug\net6.0\Data\Gyms.xml
 C:\Users\91807\source\repos\ClubHouseUtilisationApp\CHUService\bin\Debug\net6.0\Data\Libraries.xml
+C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHUService\obj\Debug\net6.0\CHUService.csproj.AssemblyReference.cache
+C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHUService\obj\Debug\net6.0\CHUService.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHUService\obj\Debug\net6.0\CHUService.AssemblyInfoInputs.cache
+C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHUService\obj\Debug\net6.0\CHUService.AssemblyInfo.cs
+C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHUService\obj\Debug\net6.0\CHUService.csproj.CoreCompileInputs.cache
 C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHUService\bin\Debug\net6.0\Data\Gyms.xml
 C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHUService\bin\Debug\net6.0\Data\Libraries.xml
 C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHUService\bin\Debug\net6.0\Data\Pools.xml
@@ -28,11 +33,6 @@ C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHUService\bin\Debug\n
 C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHUService\bin\Debug\net6.0\CHUUtilties.dll
 C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHUService\bin\Debug\net6.0\CHUUtilties.pdb
 C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHUService\bin\Debug\net6.0\CHUModels.pdb
-C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHUService\obj\Debug\net6.0\CHUService.csproj.AssemblyReference.cache
-C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHUService\obj\Debug\net6.0\CHUService.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHUService\obj\Debug\net6.0\CHUService.AssemblyInfoInputs.cache
-C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHUService\obj\Debug\net6.0\CHUService.AssemblyInfo.cs
-C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHUService\obj\Debug\net6.0\CHUService.csproj.CoreCompileInputs.cache
 C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHUService\obj\Debug\net6.0\CHUService.csproj.CopyComplete
 C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHUService\obj\Debug\net6.0\CHUService.dll
 C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHUService\obj\Debug\net6.0\refint\CHUService.dll

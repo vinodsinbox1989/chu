@@ -4,6 +4,6 @@ namespace CHUService
 {
     public abstract class FactilityFactory
     {
-        public abstract IBaseFacility GetFactilityInstance(string type);
+        public abstract IBaseFacility GetFactilityInstance(string type,string userName);
     }
 }

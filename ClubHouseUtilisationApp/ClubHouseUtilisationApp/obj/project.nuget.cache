@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "4k3KzF04XKVUbdrCNkiplC+xCquwlFNKFQt0MbYQV3Z0by9LWYAjRmreY4sdzv1O81P1ENyiRDKQqWN1dlu9IA==",
+  "dgSpecHash": "KbAr7aEjQQsrBtHRNxgLPYUNv8ztWLHO2FB9osd7y5d71DN7BauQvWPCC5oIbCTAMaL+06hCjm5oMf6p/0+DWg==",
   "success": true,
   "projectFilePath": "C:\\Users\\91807\\Downloads\\code\\chu\\ClubHouseUtilisationApp\\ClubHouseUtilisationApp\\ClubHouseUtilisationApp.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\91807\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }

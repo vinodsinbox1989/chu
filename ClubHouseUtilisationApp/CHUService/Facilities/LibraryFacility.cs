@@ -10,9 +10,12 @@ namespace CHUService.Facilities
     {
         private static List<LibraryFacilityViewModel> libraryFacilities = new();
         private static readonly string LibrariesXmlFile = GetCombinedPath("Data/Libraries.xml");
-        public LibraryFacility()
+        public override string Type { get; set; }
+        public LibraryFacility(string type, string username)
         {
             GetAll();
+            Type = type;
+            UserName = username;
         }
 
         public static void GetAll()
@@ -46,8 +49,9 @@ namespace CHUService.Facilities
             };
         }
 
-        public void Book()
+        public bool Book()
         {
+            bool result = false;
             Console.WriteLine($"Enter your Library Name from the available list: {string.Join(",", libraryFacilities.Select(x => x.Name))} ");
             var type = Console.ReadLine();
             type = !String.IsNullOrEmpty(type) ? type : "FirstFloorLibraryA";
@@ -67,6 +71,7 @@ namespace CHUService.Facilities
                 else
                 {
                     --item.BookingModel.MaxUserPerSlot;
+                    Task.Run(() => LogUserBooking(UserName, this.Type, startDate, endDate));
                     Console.WriteLine($"Booking is confirmed. Only {item.BookingModel.MaxUserPerSlot} seats are available, do you want to again book another library (Y/N)?");
                     var yesNo = Console.ReadLine();
                     switch (yesNo)
@@ -75,6 +80,7 @@ namespace CHUService.Facilities
                             this.Book();
                             break;
                         case "N":
+                            result = true;
                             Console.WriteLine("Thank you booking has been confirmed.");
                             break;
                         default:
@@ -87,7 +93,8 @@ namespace CHUService.Facilities
             {
                 Console.WriteLine("No more space available for use.");
             }
-        }
 
+            return result;
+        }
     }
 }

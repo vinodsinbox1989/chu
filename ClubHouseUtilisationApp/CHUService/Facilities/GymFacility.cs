@@ -1,4 +1,5 @@
 ﻿using CHU.Utilties;
+using CHUModels.ViewModels;
 using CHUUtilties;
 using System.Linq;
 using System.Xml;
@@ -8,11 +9,18 @@ namespace CHUService.Facilities
     public class GymFacility : BaseFacility, IBaseFacility
     {
         private static List<GymFacilityViewModel> gyms = new();
-        private static readonly string GymXmlFile = GetCombinedPath("Data/Gyms.xml");       
+        private static readonly string GymXmlFile = GetCombinedPath("Data/Gyms.xml");
+        List<UserBookingViewModel> UserBookings = new();
 
-        public GymFacility()
+
+        public override string Type { get; set; }
+
+        public GymFacility(string type, string username)
         {
             GetAll();
+            Type = type;
+            UserName = username;
+
         }
 
         public static void GetAll()
@@ -22,7 +30,7 @@ namespace CHUService.Facilities
             List<XmlNode> nodes = doc.SelectNodes("Gyms//Gym").Cast<XmlNode>().ToList();
             gyms = nodes.Select(x => new GymFacilityViewModel(
                 x.Attributes["Name"]?.Value,
-                Convert.ToInt32(x.Attributes["MaxAllowedBlockageLimit"]?.Value) <=0 ? 1000 : Convert.ToInt32(x.Attributes["MaxAllowedBlockageLimit"]?.Value),
+                Convert.ToInt32(x.Attributes["MaxAllowedBlockageLimit"]?.Value) <= 0 ? 1000 : Convert.ToInt32(x.Attributes["MaxAllowedBlockageLimit"]?.Value),
                 Convert.ToDateTime(x.Attributes["FacilityStartDate"]?.Value),
                 Convert.ToDateTime(x.Attributes["FacilityEndDate"]?.Value),
                 EnumExtensions.ParseEnum<MaintainanceType>(Convert.ToString(x.Attributes["MaintainanceType"]?.Value))
@@ -31,8 +39,10 @@ namespace CHUService.Facilities
 
 
 
-        public void Book()
+        public bool Book()
         {
+            bool result = false;
+            UserBookings = BaseFacility.ReadBookingInfoByUser(UserName);
             Console.WriteLine($"Enter your Gym Area from the available list: {string.Join(",", gyms.Select(x => x.Name))} ");
             var type = Console.ReadLine();
             type = !String.IsNullOrEmpty(type) ? type : "FirstFloorGymA";
@@ -57,6 +67,7 @@ namespace CHUService.Facilities
                         else
                         {
                             --item.BookingModel.MaxUserPerSlot;
+                            Task.Run(() => LogUserBooking(UserName, this.Type, startDate, endDate));
                             Console.WriteLine($"Booking is confirmed. Only {item.BookingModel.MaxUserPerSlot} seats are available, do you want to again book another gym (Y/N)?");
                             var yesNo = Console.ReadLine();
                             switch (yesNo)
@@ -65,12 +76,14 @@ namespace CHUService.Facilities
                                     this.Book();
                                     break;
                                 case "N":
+                                    result = true;
                                     Console.WriteLine("Thank you booking has been confirmed.");
                                     break;
                                 default:
                                     Console.WriteLine("Invalid input.");
                                     break;
                             }
+
                         }
                     }
                     else
@@ -87,6 +100,7 @@ namespace CHUService.Facilities
             {
                 Console.WriteLine("No more space available for use.");
             }
+            return result;
         }
     }
 }

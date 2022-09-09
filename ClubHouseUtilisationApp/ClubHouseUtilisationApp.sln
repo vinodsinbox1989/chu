@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClubHouseUtilisationApp", "ClubHouseUtilisationApp\ClubHouseUtilisationApp.csproj", "{09477F84-3F37-4039-8D5F-E5E9E3E9109C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClubHouseUtilisationApp", "ClubHouseUtilisationApp\ClubHouseUtilisationApp.csproj", "{09477F84-3F37-4039-8D5F-E5E9E3E9109C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHUModels", "CHUModels\CHUModels.csproj", "{8E0561C4-5F60-4886-9958-3DDF9F24AF4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHUModels", "CHUModels\CHUModels.csproj", "{8E0561C4-5F60-4886-9958-3DDF9F24AF4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHUService", "CHUService\CHUService.csproj", "{A82AF4AA-6891-45D4-93BA-B9B1EE896123}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHUService", "CHUService\CHUService.csproj", "{A82AF4AA-6891-45D4-93BA-B9B1EE896123}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHUUtilties", "CHU.Utilties\CHUUtilties.csproj", "{A98CE457-EA13-4CD6-8D27-9C2B1BE36FEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHUUtilties", "CHU.Utilties\CHUUtilties.csproj", "{A98CE457-EA13-4CD6-8D27-9C2B1BE36FEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHU.Tests", "CHU.Tests\CHU.Tests.csproj", "{651F9A10-8FC0-4577-B6C0-5AA31348A1D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A98CE457-EA13-4CD6-8D27-9C2B1BE36FEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A98CE457-EA13-4CD6-8D27-9C2B1BE36FEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A98CE457-EA13-4CD6-8D27-9C2B1BE36FEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{651F9A10-8FC0-4577-B6C0-5AA31348A1D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{651F9A10-8FC0-4577-B6C0-5AA31348A1D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{651F9A10-8FC0-4577-B6C0-5AA31348A1D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{651F9A10-8FC0-4577-B6C0-5AA31348A1D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

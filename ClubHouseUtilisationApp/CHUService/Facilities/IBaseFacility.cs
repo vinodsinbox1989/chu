@@ -2,6 +2,8 @@
 {
     public interface IBaseFacility
     {
-        void Book();
+        bool Book();
+
+        
     }
 }
