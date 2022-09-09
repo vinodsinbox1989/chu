@@ -9,6 +9,8 @@ var userName = Console.ReadLine();
 
 userName = !String.IsNullOrEmpty(userName) ? userName : "UserA";
 
+Console.WriteLine($"Booking for the user {userName}: ");
+
 BookFacility(factory);
 
 Console.ReadKey();

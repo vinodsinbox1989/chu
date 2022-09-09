@@ -1,23 +1,41 @@
 ﻿using CHU.Utilties;
+using CHUUtilties;
+using System.Linq;
+using System.Xml;
 
 namespace CHUService.Facilities
 {
-    public class GymFacility : IBaseFacility
+    public class GymFacility : BaseFacility, IBaseFacility
     {
-        private static readonly List<GymFacilityViewModel> gyms = new();
+        private static List<GymFacilityViewModel> gyms = new();
+        private static readonly string GymXmlFile = GetCombinedPath("Data/Gyms.xml");       
+
         public GymFacility()
         {
-            gyms.Add(new GymFacilityViewModel("FirstFloorBlockA", 3, new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 09, 00, 00), new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 17, 00, 00), MaintainanceType.Available) { });
-            gyms.Add(new GymFacilityViewModel("SecondFloorBlockA", 50, new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 09, 00, 00), new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 13, 00, 00), MaintainanceType.PartiallyAvailable) { });
-            gyms.Add(new GymFacilityViewModel("FirstFloorBlockB", 100, new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 09, 00, 00), new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 17, 00, 00), MaintainanceType.NotAvailable) { });
-            gyms.Add(new GymFacilityViewModel("SecondFloorBlockB", 100, new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 09, 00, 00), new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 13, 00, 00), MaintainanceType.PartiallyAvailable) { });
+            GetAll();
         }
+
+        public static void GetAll()
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(GymXmlFile);
+            List<XmlNode> nodes = doc.SelectNodes("Gyms//Gym").Cast<XmlNode>().ToList();
+            gyms = nodes.Select(x => new GymFacilityViewModel(
+                x.Attributes["Name"]?.Value,
+                Convert.ToInt32(x.Attributes["MaxAllowedBlockageLimit"]?.Value) <=0 ? 1000 : Convert.ToInt32(x.Attributes["MaxAllowedBlockageLimit"]?.Value),
+                Convert.ToDateTime(x.Attributes["FacilityStartDate"]?.Value),
+                Convert.ToDateTime(x.Attributes["FacilityEndDate"]?.Value),
+                EnumExtensions.ParseEnum<MaintainanceType>(Convert.ToString(x.Attributes["MaintainanceType"]?.Value))
+               )).ToList();
+        }
+
+
 
         public void Book()
         {
             Console.WriteLine($"Enter your Gym Area from the available list: {string.Join(",", gyms.Select(x => x.Name))} ");
             var type = Console.ReadLine();
-            type = !String.IsNullOrEmpty(type) ? type : "FirstFloorBlockA";
+            type = !String.IsNullOrEmpty(type) ? type : "FirstFloorGymA";
             var item = gyms.FirstOrDefault(x => x.Name == type);
             if (gyms.Any(x => x.Name == type) && item?.BookingModel.MaxUserPerSlot > 0)
             {

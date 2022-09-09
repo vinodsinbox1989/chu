@@ -24,7 +24,8 @@
       },
       "CHUService/1.0.0": {
         "dependencies": {
-          "CHUModels": "1.0.0"
+          "CHUModels": "1.0.0",
+          "CHUUtilties": "1.0.0"
         },
         "runtime": {
           "CHUService.dll": {}

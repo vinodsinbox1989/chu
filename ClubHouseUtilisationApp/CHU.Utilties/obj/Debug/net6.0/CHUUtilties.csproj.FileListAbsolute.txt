@@ -10,3 +10,15 @@ C:\Users\91807\source\repos\ClubHouseUtilisationApp\CHU.Utilties\obj\Debug\net6.
 C:\Users\91807\source\repos\ClubHouseUtilisationApp\CHU.Utilties\obj\Debug\net6.0\refint\CHUUtilties.dll
 C:\Users\91807\source\repos\ClubHouseUtilisationApp\CHU.Utilties\obj\Debug\net6.0\CHUUtilties.pdb
 C:\Users\91807\source\repos\ClubHouseUtilisationApp\CHU.Utilties\obj\Debug\net6.0\ref\CHUUtilties.dll
+C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHU.Utilties\bin\Debug\net6.0\CHUUtilties.deps.json
+C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHU.Utilties\bin\Debug\net6.0\CHUUtilties.dll
+C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHU.Utilties\bin\Debug\net6.0\CHUUtilties.pdb
+C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHU.Utilties\obj\Debug\net6.0\CHUUtilties.csproj.AssemblyReference.cache
+C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHU.Utilties\obj\Debug\net6.0\CHUUtilties.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHU.Utilties\obj\Debug\net6.0\CHUUtilties.AssemblyInfoInputs.cache
+C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHU.Utilties\obj\Debug\net6.0\CHUUtilties.AssemblyInfo.cs
+C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHU.Utilties\obj\Debug\net6.0\CHUUtilties.csproj.CoreCompileInputs.cache
+C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHU.Utilties\obj\Debug\net6.0\CHUUtilties.dll
+C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHU.Utilties\obj\Debug\net6.0\refint\CHUUtilties.dll
+C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHU.Utilties\obj\Debug\net6.0\CHUUtilties.pdb
+C:\Users\91807\Downloads\code\chu\ClubHouseUtilisationApp\CHU.Utilties\obj\Debug\net6.0\ref\CHUUtilties.dll

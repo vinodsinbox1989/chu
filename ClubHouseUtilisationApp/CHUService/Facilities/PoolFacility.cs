@@ -1,23 +1,62 @@
 ﻿using CHU.Utilties;
+using CHUModels;
+using CHUUtilties;
+using System.Data;
+using System.Linq;
+using System.Reflection.Metadata;
+using System.Runtime.CompilerServices;
+using System.Xml;
 
 namespace CHUService.Facilities
 {
-    public class PoolFacility : IBaseFacility
+    public class PoolFacility : BaseFacility, IBaseFacility
     {
-        private static readonly List<PoolFacilityViewModel> pools = new();
+        private static List<PoolFacilityViewModel> pools = new();
+        private static readonly string PoolXmlFile = GetCombinedPath("Data/Pools.xml");
+
         public PoolFacility()
         {
-            pools.Add(new PoolFacilityViewModel("FirstFloorBlockA", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 09, 00, 00), new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 17, 00, 00), MaintainanceType.NotAvailable, new CHUModels.LockingModel() { LockStartTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 03, 00, 00), LockEndTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 05, 00, 00) }) { });
-            pools.Add(new PoolFacilityViewModel("SecondFloorBlockA", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 09, 00, 00), new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 13, 00, 00), MaintainanceType.NotAvailable) { });
-            pools.Add(new PoolFacilityViewModel("FirstFloorBlockB", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 09, 00, 00), new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 17, 00, 00), MaintainanceType.Available) { });
-            pools.Add(new PoolFacilityViewModel("SecondFloorBlockB", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 09, 00, 00), new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 13, 00, 00), MaintainanceType.Available) { });
+            GetAll();
+        }
+
+        public static void GetAll()
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(PoolXmlFile);
+            List<XmlNode> nodes = doc.SelectNodes("Pools//Pool").Cast<XmlNode>().ToList();
+            pools = nodes.Select(x => new PoolFacilityViewModel(
+                x.Attributes["Name"]?.Value,
+                Convert.ToDateTime(x.Attributes["FacilityStartDate"]?.Value),
+                Convert.ToDateTime(x.Attributes["FacilityEndDate"]?.Value),
+                EnumExtensions.ParseEnum<MaintainanceType>(Convert.ToString(x.Attributes["MaintainanceType"]?.Value)),
+                GetLockingPeriod(x), GetMaintenancePeriod(x))).ToList();
+
+
+
+        }
+
+        private static MaintenancePeriodModel GetMaintenancePeriod(XmlNode x)
+        {
+            return new MaintenancePeriodModel() { };
+        }
+
+        private static LockingModel GetLockingPeriod(XmlNode x)
+        {
+            var lockingPeriodNode = x.SelectSingleNode("LockingPeriod")?.Cast<XmlNode>()?.ToList();
+            var sDate = lockingPeriodNode?.FirstOrDefault(c => c.Name == "LockStartDate")?.InnerText;
+            var eDate = lockingPeriodNode?.FirstOrDefault(c => c.Name == "LockEndDate")?.InnerText;
+            return new LockingModel()
+            {
+                LockStartTime = Convert.ToDateTime(sDate),
+                LockEndTime = Convert.ToDateTime(eDate),
+            };
         }
 
         public void Book()
         {
             Console.WriteLine($"Enter your Pool Area from the available list: {string.Join(",", pools.Select(x => x.Name))} ");
             var type = Console.ReadLine();
-            type = !String.IsNullOrEmpty(type) ? type : "FirstFloorBlockA";
+            type = !String.IsNullOrEmpty(type) ? type : "FirstFloorPoolA";
             var item = pools.FirstOrDefault(x => x.Name == type);
             if (pools.Any(x => x.Name == type))
             {

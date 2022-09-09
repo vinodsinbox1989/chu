@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -7,6 +7,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Data\Gyms.xml" />
+    <None Remove="Data\Libraries.xml" />
+    <None Remove="Data\Pools.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Data\Gyms.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Libraries.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Pools.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CHU.Utilties\CHUUtilties.csproj" />
     <ProjectReference Include="..\CHUModels\CHUModels.csproj" />
   </ItemGroup>
 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\91807\\source\\repos\\ClubHouseUtilisationApp\\CHU.Utilties\\CHUUtilties.csproj": {}
+    "C:\\Users\\91807\\Downloads\\code\\chu\\ClubHouseUtilisationApp\\CHU.Utilties\\CHUUtilties.csproj": {}
   },
   "projects": {
-    "C:\\Users\\91807\\source\\repos\\ClubHouseUtilisationApp\\CHU.Utilties\\CHUUtilties.csproj": {
+    "C:\\Users\\91807\\Downloads\\code\\chu\\ClubHouseUtilisationApp\\CHU.Utilties\\CHUUtilties.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\91807\\source\\repos\\ClubHouseUtilisationApp\\CHU.Utilties\\CHUUtilties.csproj",
+        "projectUniqueName": "C:\\Users\\91807\\Downloads\\code\\chu\\ClubHouseUtilisationApp\\CHU.Utilties\\CHUUtilties.csproj",
         "projectName": "CHUUtilties",
-        "projectPath": "C:\\Users\\91807\\source\\repos\\ClubHouseUtilisationApp\\CHU.Utilties\\CHUUtilties.csproj",
+        "projectPath": "C:\\Users\\91807\\Downloads\\code\\chu\\ClubHouseUtilisationApp\\CHU.Utilties\\CHUUtilties.csproj",
         "packagesPath": "C:\\Users\\91807\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\91807\\source\\repos\\ClubHouseUtilisationApp\\CHU.Utilties\\obj\\",
+        "outputPath": "C:\\Users\\91807\\Downloads\\code\\chu\\ClubHouseUtilisationApp\\CHU.Utilties\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\91807\\AppData\\Roaming\\NuGet\\NuGet.Config",

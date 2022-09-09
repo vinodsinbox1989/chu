@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Pools>
+	<Pool Name="FirstFloorPoolA" FacilityStartDate="09/09/2022 09:00:00" FacilityEndDate="09/09/2022 17:00:00" MaintainanceType="Available">
+		<LockingPeriod>
+			<LockStartDate>09/09/2022 14:00:00</LockStartDate>
+			<LockEndDate>09/09/2022 16:00:00</LockEndDate>
+		</LockingPeriod>
+		<MaintenancePeriod>
+			<MaxAllowedBlockageLimit></MaxAllowedBlockageLimit>
+			<StartDateTime></StartDateTime>
+			<EndDateTime></EndDateTime>
+			<RecurringType></RecurringType>
+			<PeriodType></PeriodType>
+		</MaintenancePeriod>
+	</Pool>
+	<Pool Name="SecondFloorPoolA" FacilityStartDate="09/09/2022 08:00:00" FacilityEndDate="09/09/2022 12:00:00" MaintainanceType="Available">
+		<LockingPeriod>
+			<LockStartDate>09/09/2022 10:00:00</LockStartDate>
+			<LockEndDate>09/09/2022 11:00:00</LockEndDate>	
+	</LockingPeriod>
+		<MaintenancePeriod>
+			<MaxAllowedBlockageLimit></MaxAllowedBlockageLimit>
+			<StartDateTime></StartDateTime>
+			<EndDateTime></EndDateTime>
+			<RecurringType></RecurringType>
+			<PeriodType></PeriodType>
+		</MaintenancePeriod>
+	</Pool>
+</Pools>

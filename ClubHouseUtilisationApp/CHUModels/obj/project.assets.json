@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\91807\\source\\repos\\ClubHouseUtilisationApp\\CHUModels\\CHUModels.csproj",
+      "projectUniqueName": "C:\\Users\\91807\\Downloads\\code\\chu\\ClubHouseUtilisationApp\\CHUModels\\CHUModels.csproj",
       "projectName": "CHUModels",
-      "projectPath": "C:\\Users\\91807\\source\\repos\\ClubHouseUtilisationApp\\CHUModels\\CHUModels.csproj",
+      "projectPath": "C:\\Users\\91807\\Downloads\\code\\chu\\ClubHouseUtilisationApp\\CHUModels\\CHUModels.csproj",
       "packagesPath": "C:\\Users\\91807\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\91807\\source\\repos\\ClubHouseUtilisationApp\\CHUModels\\obj\\",
+      "outputPath": "C:\\Users\\91807\\Downloads\\code\\chu\\ClubHouseUtilisationApp\\CHUModels\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\91807\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -53,8 +53,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\91807\\source\\repos\\ClubHouseUtilisationApp\\CHU.Utilties\\CHUUtilties.csproj": {
-              "projectPath": "C:\\Users\\91807\\source\\repos\\ClubHouseUtilisationApp\\CHU.Utilties\\CHUUtilties.csproj"
+            "C:\\Users\\91807\\Downloads\\code\\chu\\ClubHouseUtilisationApp\\CHU.Utilties\\CHUUtilties.csproj": {
+              "projectPath": "C:\\Users\\91807\\Downloads\\code\\chu\\ClubHouseUtilisationApp\\CHU.Utilties\\CHUUtilties.csproj"
             }
           }
         }

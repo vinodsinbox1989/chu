@@ -1,23 +1,56 @@
-﻿using CHUService.ViewModels;
+﻿using CHU.Utilties;
+using CHUModels;
+using CHUModels.ViewModels;
+using CHUUtilties;
+using System.Xml;
 
 namespace CHUService.Facilities
 {
-    public class LibraryFacility : IBaseFacility
+    public class LibraryFacility : BaseFacility, IBaseFacility
     {
-        private static readonly List<LibraryFacilityViewModel> libraryFacilities = new();
+        private static List<LibraryFacilityViewModel> libraryFacilities = new();
+        private static readonly string LibrariesXmlFile = GetCombinedPath("Data/Libraries.xml");
         public LibraryFacility()
         {
-            libraryFacilities.Add(new LibraryFacilityViewModel("FirstFloorBlockA", 3, new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 09, 00, 00), new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 17, 00, 00)) { });
-            libraryFacilities.Add(new LibraryFacilityViewModel("SecondFloorBlockA", 50, new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 09, 00, 00), new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 13, 00, 00)) { });
-            libraryFacilities.Add(new LibraryFacilityViewModel("FirstFloorBlockB", 100, new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 09, 00, 00), new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 17, 00, 00)) { });
-            libraryFacilities.Add(new LibraryFacilityViewModel("SecondFloorBlockB", 100, new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 09, 00, 00), new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 13, 00, 00)) { });
+            GetAll();
+        }
+
+        public static void GetAll()
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(LibrariesXmlFile);
+            List<XmlNode> nodes = doc.SelectNodes("Libraries//Library").Cast<XmlNode>().ToList();
+            libraryFacilities = nodes.Select(x => new LibraryFacilityViewModel(
+                x.Attributes["Name"]?.Value,
+                Convert.ToInt32(x.Attributes["MaxAllowedBlockageLimit"]?.Value) <= 0 ? 1000 : Convert.ToInt32(x.Attributes["MaxAllowedBlockageLimit"]?.Value),
+                Convert.ToDateTime(x.Attributes["FacilityStartDate"]?.Value),
+                Convert.ToDateTime(x.Attributes["FacilityEndDate"]?.Value),
+                GetLockingPeriod(x), GetMaintenancePeriod(x)
+               )).ToList();
+        }
+
+        private static MaintenancePeriodModel GetMaintenancePeriod(XmlNode x)
+        {
+            return new MaintenancePeriodModel() { };
+        }
+
+        private static LockingModel GetLockingPeriod(XmlNode x)
+        {
+            var lockingPeriodNode = x.SelectSingleNode("LockingPeriod")?.Cast<XmlNode>()?.ToList();
+            var sDate = lockingPeriodNode?.FirstOrDefault(c => c.Name == "LockStartDate")?.InnerText;
+            var eDate = lockingPeriodNode?.FirstOrDefault(c => c.Name == "LockEndDate")?.InnerText;
+            return new LockingModel()
+            {
+                LockStartTime = Convert.ToDateTime(sDate),
+                LockEndTime = Convert.ToDateTime(eDate),
+            };
         }
 
         public void Book()
         {
             Console.WriteLine($"Enter your Library Name from the available list: {string.Join(",", libraryFacilities.Select(x => x.Name))} ");
             var type = Console.ReadLine();
-            type = !String.IsNullOrEmpty(type) ? type : "FirstFloorBlockA";
+            type = !String.IsNullOrEmpty(type) ? type : "FirstFloorLibraryA";
             var item = libraryFacilities.FirstOrDefault(x => x.Name == type);
             if (libraryFacilities.Any(x => x.Name == type) && item?.BookingModel.MaxUserPerSlot > 0)
             {
